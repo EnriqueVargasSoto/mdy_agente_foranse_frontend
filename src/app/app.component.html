@@ -41,11 +41,11 @@
 
         <a href="https://flowbite.com" class="flex items-center justify-between mr-4">
           <img
-            src="https://flowbite.s3.amazonaws.com/logo.svg"
+            src="https://mdybpo.com/wp-content/uploads/2022/10/logo-mdy-verde.svg"
             class="mr-3 h-8"
             alt="Flowbite Logo"
           />
-          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+          <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> -->
         </a>
 
         <button
@@ -851,6 +851,10 @@
           <a
             href="#"
             class="group flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+
+            data-tooltip-target="tooltip-dashboard"
+            data-tooltip-trigger="hover"
+            data-tooltip-placement="right"
           >
             <svg
               aria-hidden="true"
@@ -862,34 +866,35 @@
               <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
               <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
             </svg>
-            <span class="ml-3 flex-1 whitespace-nowrap" *ngIf="($collapsed | async) === false">Overview</span>
+            <span class="ml-3 flex-1 whitespace-nowrap" *ngIf="($collapsed | async) === false">Dashboard</span>
           </a>
+          <div id="tooltip-dashboard" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+            Dashboard
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
         </li>
+
         <li>
           <button
             type="button"
-            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-
-            *ngIf="($collapsed | async) === false;else expandedButton"
-
-            aria-controls="dropdown-pages"
-            data-collapse-toggle="dropdown-pages"
+            class="group flex cursor-pointer items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            aria-controls="dropdown-sales"
+            data-collapse-toggle="dropdown-sales"
           >
             <svg
-              aria-hidden="true"
-              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
               fill="currentColor"
               viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                clip-rule="evenodd"
-              ></path>
+              >
+              <path d="M12.013 6.175 7.006 9.369l5.007 3.194-5.007 3.193L2 12.545l5.006-3.193L2 6.175l5.006-3.194 5.007 3.194ZM6.981 17.806l5.006-3.193 5.006 3.193L11.987 21l-5.006-3.194Z"/>
+              <path d="m12.013 12.545 5.006-3.194-5.006-3.176 4.98-3.194L22 6.175l-5.007 3.194L22 12.562l-5.007 3.194-4.98-3.211Z"/>
             </svg>
-            <span class="flex-1 ml-3 text-left whitespace-nowrap"  *ngIf="($collapsed | async) === false"
-              >Pages</span
+
+            <span class="flex-1 ml-3 text-left whitespace-nowrap" *ngIf="($collapsed | async) === false"
+              >Maestros</span
             >
             <svg
               aria-hidden="true"
@@ -905,104 +910,73 @@
               ></path>
             </svg>
           </button>
-
-          <ng-template #expandedButton>
-            <button
-              type="button"
-              class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-
-              id="mega-menu-dropdown-button" data-dropdown-toggle="mega-menu-dropdown"
-            >
-              <svg
-                aria-hidden="true"
-                class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-
-              <svg
-                aria-hidden="true"
-                class="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </button>
-          </ng-template>
-
-
-          <div id="mega-menu-dropdown" class="absolute z-10 grid hidden w-52 grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700">
-            <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
-                    <li>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                            About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                            Library
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                            Resources
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                            Pro Version
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-          <ul id="dropdown-pages" class="hidden py-2 space-y-2">
+          <ul id="dropdown-sales" class="hidden py-2 space-y-2" >
             <li>
+              <a
+                href="#"
+                class="group flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
 
+                [style.display]="($collapsed | async) === true ? 'block' : 'none'"
+
+                data-tooltip-target="tooltip-default"
+                data-tooltip-trigger="hover"
+                data-tooltip-placement="right"
+              >
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.25-2.095c.478-.86.75-1.85.75-2.905a5.973 5.973 0 0 0-.75-2.906 4 4 0 1 1 0 5.811ZM15.466 20c.34-.588.535-1.271.535-2v-1a5.978 5.978 0 0 0-1.528-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.535Z" clip-rule="evenodd"/>
+                </svg>
+
+              </a>
+              <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Trabajadores
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+              </div>
               <a
                 href="#"
                 class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >Settings</a
-              >
+                *ngIf="($collapsed | async) === false"
+                >
+
+                <span *ngIf="($collapsed | async) === false">Trabajadores</span>
+              </a>
             </li>
             <li>
+
+              <a
+                href="#"
+                class="group flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+
+                [style.display]="($collapsed | async) === true ? 'block' : 'none'"
+
+                data-tooltip-target="tooltip-herramientas"
+                data-tooltip-trigger="hover"
+                data-tooltip-placement="right"
+              >
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8.4 6.763c-.251.1-.383.196-.422.235L6.564 5.584l2.737-2.737c1.113-1.113 3.053-1.097 4.337.187l1.159 1.159a1 1 0 0 1 1.39.022l4.105 4.105a1 1 0 0 1 .023 1.39l1.345 1.346a1 1 0 0 1 0 1.415l-2.052 2.052a1 1 0 0 1-1.414 0l-1.346-1.346a1 1 0 0 1-1.323.039L11.29 8.983a1 1 0 0 1 .04-1.324l-.849-.848c-.18-.18-.606-.322-1.258-.25a3.271 3.271 0 0 0-.824.202Zm1.519 3.675L3.828 16.53a1 1 0 0 0 0 1.414l2.736 2.737a1 1 0 0 0 1.414 0l6.091-6.091-4.15-4.15Z"/>
+                </svg>
+
+              </a>
+              <div id="tooltip-herramientas" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Herramientas Productivas
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+              </div>
               <a
                 href="#"
                 class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >Kanban</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >Calendar</a
-              >
+                *ngIf="($collapsed | async) === false"
+                >Herramientas Productivas
+              </a>
             </li>
           </ul>
         </li>
+
         <li>
           <button
             type="button"
-            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-            aria-controls="dropdown-sales"
-            data-collapse-toggle="dropdown-sales"
+            class="group flex cursor-pointer items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            aria-controls="dropdown-reportes"
+            data-collapse-toggle="dropdown-reportes"
           >
             <svg
               aria-hidden="true"
@@ -1018,7 +992,7 @@
               ></path>
             </svg>
             <span class="flex-1 ml-3 text-left whitespace-nowrap" *ngIf="($collapsed | async) === false"
-              >Sales</span
+              >Reportes</span
             >
             <svg
               aria-hidden="true"
@@ -1034,7 +1008,7 @@
               ></path>
             </svg>
           </button>
-          <ul id="dropdown-sales" class="hidden py-2 space-y-2" style="background: darkgray;border-radius: 15px;">
+          <ul id="dropdown-reportes" class="hidden py-2 space-y-2" >
             <li>
               <a
                 href="#"
@@ -1042,7 +1016,7 @@
 
                 [style.display]="($collapsed | async) === true ? 'block' : 'none'"
 
-                data-tooltip-target="tooltip-default"
+                data-tooltip-target="tooltip-resumen-actividades"
                 data-tooltip-trigger="hover"
                 data-tooltip-placement="right"
               >
@@ -1057,8 +1031,8 @@
                   <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                 </svg>
               </a>
-              <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                Products
+              <div id="tooltip-resumen-actividades" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Resumen de Actividades
                   <div class="tooltip-arrow" data-popper-arrow></div>
               </div>
               <a
@@ -1067,114 +1041,220 @@
                 *ngIf="($collapsed | async) === false"
                 >
 
-                <span *ngIf="($collapsed | async) === false">Products</span>
-                </a
-              >
+                <span *ngIf="($collapsed | async) === false">Resumen de Actividades</span>
+              </a>
             </li>
             <li>
+
+              <a
+                href="#"
+                class="group flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+
+                [style.display]="($collapsed | async) === true ? 'block' : 'none'"
+
+                data-tooltip-target="tooltip-actividad-inusual"
+                data-tooltip-trigger="hover"
+                data-tooltip-placement="right"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                </svg>
+              </a>
+              <div id="tooltip-actividad-inusual" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Actividad inusual
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+              </div>
               <a
                 href="#"
                 class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >Billing</a
-              >
+                *ngIf="($collapsed | async) === false"
+                >Actividad inusual
+              </a>
             </li>
             <li>
+
+              <a
+                href="#"
+                class="group flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+
+                [style.display]="($collapsed | async) === true ? 'block' : 'none'"
+
+                data-tooltip-target="tooltip-asistencias"
+                data-tooltip-trigger="hover"
+                data-tooltip-placement="right"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                </svg>
+              </a>
+              <div id="tooltip-asistencias" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Asistencias
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+              </div>
               <a
                 href="#"
                 class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >Invoice</a
-              >
+                *ngIf="($collapsed | async) === false"
+                >Asistencias
+              </a>
             </li>
+
+            <li>
+
+              <a
+                href="#"
+                class="group flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+
+                [style.display]="($collapsed | async) === true ? 'block' : 'none'"
+
+                data-tooltip-target="tooltip-horas-rastreadas"
+                data-tooltip-trigger="hover"
+                data-tooltip-placement="right"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                </svg>
+              </a>
+              <div id="tooltip-horas-rastreadas" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Horas rastreadas
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+              </div>
+              <a
+                href="#"
+                class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                *ngIf="($collapsed | async) === false"
+                >Horas rastreadas
+              </a>
+            </li>
+            <li>
+
+              <a
+                href="#"
+                class="group flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+
+                [style.display]="($collapsed | async) === true ? 'block' : 'none'"
+
+                data-tooltip-target="tooltip-cronologia"
+                data-tooltip-trigger="hover"
+                data-tooltip-placement="right"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                </svg>
+              </a>
+              <div id="tooltip-cronologia" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Cronología
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+              </div>
+              <a
+                href="#"
+                class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                *ngIf="($collapsed | async) === false"
+                >Cronología
+              </a>
+            </li>
+            <li>
+
+              <a
+                href="#"
+                class="group flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+
+                [style.display]="($collapsed | async) === true ? 'block' : 'none'"
+
+                data-tooltip-target="tooltip-web-apps"
+                data-tooltip-trigger="hover"
+                data-tooltip-placement="right"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                </svg>
+              </a>
+              <div id="tooltip-web-apps" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Web - Apps
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+              </div>
+              <a
+                href="#"
+                class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                *ngIf="($collapsed | async) === false"
+                >Web - Apps
+              </a>
+            </li>
+
+            <li>
+
+              <a
+                href="#"
+                class="group flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+
+                [style.display]="($collapsed | async) === true ? 'block' : 'none'"
+
+                data-tooltip-target="tooltip-conectividad"
+                data-tooltip-trigger="hover"
+                data-tooltip-placement="right"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                </svg>
+              </a>
+              <div id="tooltip-conectividad" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Conectividad
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+              </div>
+              <a
+                href="#"
+                class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                *ngIf="($collapsed | async) === false"
+                >Conectividad
+              </a>
+            </li>
+
           </ul>
         </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-          >
-            <svg
-              aria-hidden="true"
-              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"
-              ></path>
-              <path
-                d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"
-              ></path>
-            </svg>
-            <span class="flex-1 ml-3 whitespace-nowrap">Messages</span>
-            <span
-              class="inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800"
-            >
-              4
-            </span>
-          </a>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-            aria-controls="dropdown-authentication"
-            data-collapse-toggle="dropdown-authentication"
-          >
-            <svg
-              aria-hidden="true"
-              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <span class="flex-1 ml-3 text-left whitespace-nowrap"
-              >Authentication</span
-            >
-            <svg
-              aria-hidden="true"
-              class="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-          <ul id="dropdown-authentication" class="hidden py-2 space-y-2">
-            <li>
-              <a
-                href="#"
-                class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >Sign In</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >Sign Up</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >Forgot Password</a
-              >
-            </li>
-          </ul>
-        </li>
+
+
       </ul>
       <!-- <ul
         class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
@@ -1291,7 +1371,7 @@
                                       <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                                   </svg>
                               </div>
-                              <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" required="">
+                              <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Buscar..." required="">
                           </div>
                       </form>
                   </div>
@@ -1360,26 +1440,11 @@
                   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                           <tr>
-                              <th scope="col" class="sticky left-0 bg-gray-50 px-4 py-3">Product name</th>
-                              <th scope="col" class="px-4 py-3">Category</th>
-                              <th scope="col" class="px-4 py-3">Brand</th>
-                              <th scope="col" class="px-4 py-3">Description</th>
-                              <th scope="col" class="px-4 py-3">Price</th>
-                              <th scope="col" class="px-4 py-3">Product name</th>
-                              <th scope="col" class="px-4 py-3">Category</th>
-                              <th scope="col" class="px-4 py-3">Brand</th>
-                              <th scope="col" class="px-4 py-3">Description</th>
-                              <th scope="col" class="px-4 py-3">Price</th>
-                              <th scope="col" class="px-4 py-3">Product name</th>
-                              <th scope="col" class="px-4 py-3">Category</th>
-                              <th scope="col" class="px-4 py-3">Brand</th>
-                              <th scope="col" class="px-4 py-3">Description</th>
-                              <th scope="col" class="px-4 py-3">Price</th>
-                              <th scope="col" class="px-4 py-3">Product name</th>
-                              <th scope="col" class="px-4 py-3">Category</th>
-                              <th scope="col" class="px-4 py-3">Brand</th>
-                              <th scope="col" class="px-4 py-3">Description</th>
-                              <th scope="col" class="px-4 py-3">Price</th>
+                              <th scope="col" class="sticky left-0 bg-gray-50 px-4 py-3">Actividad - Herramienta</th>
+                              <th scope="col" class="px-4 py-3">Productividad</th>
+                              <th scope="col" class="px-4 py-3">Scope</th>
+                              <th scope="col" class="px-4 py-3">Tiempo usado</th>
+
                               <th scope="col" class="sticky right-0 bg-gray-50 px-4 py-3">
                                   <span class="sr-only">Actions</span>
                               </th>
@@ -1387,13 +1452,29 @@
                       </thead>
                       <tbody>
                           <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                              <th scope="row" class="sticky left-0 bg-gray-200 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-600 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iMac 27&#34;</th>
+                              <th scope="row" class="sticky left-0 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-600 font-medium text-gray-900 whitespace-nowrap dark:text-white">web.aplicacionesmdy.com</th>
                               <td class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-600" (mouseenter)="highlightColumn(1)"
-                              (mouseleave)="clearHighlight()">PC</td>
+                              (mouseleave)="clearHighlight()">
+
+                                <div class="flex">
+                                  <div class="flex items-center me-4">
+                                      <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                      <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Productivo</label>
+                                  </div>
+                                  <div class="flex items-center me-4">
+                                      <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                      <label for="inline-2-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Neutro</label>
+                                  </div>
+                                  <div class="flex items-center me-4">
+                                      <input checked id="inline-checked-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                      <label for="inline-checked-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No Productivo</label>
+                                  </div>
+                                </div>
+
+                              </td>
                               <td class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-600" (mouseenter)="highlightColumn(2)"
-                              (mouseleave)="clearHighlight()">Apple</td>
-                              <td class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-600">300</td>
-                              <td class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-600">$2999</td>
+                              (mouseleave)="clearHighlight()">Compañia</td>
+                              <td class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-600">270h 39m</td>
                               <td class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-600 flex items-center justify-end">
                                   <button id="apple-imac-27-dropdown-button" data-dropdown-toggle="apple-imac-27-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
                                       <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -1415,249 +1496,8 @@
                                   </div>
                               </td>
                           </tr>
-                          <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                              <th scope="row" class="sticky left-0 bg-gray-200 px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iMac 20&#34;</th>
-                              <td class="px-4 py-3">PC</td>
-                              <td class="px-4 py-3">Apple</td>
-                              <td class="px-4 py-3">200</td>
-                              <td class="px-4 py-3">$1499</td>
-                              <td class="px-4 py-3 flex items-center justify-end">
-                                  <button id="apple-imac-20-dropdown-button" data-dropdown-toggle="apple-imac-20-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                      </svg>
-                                  </button>
-                                  <div id="apple-imac-20-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                      <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="apple-imac-20-dropdown-button">
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                          </li>
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                          </li>
-                                      </ul>
-                                      <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                      </div>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                              <th scope="row" class="sticky left-0 bg-gray-200 px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iPhone 14</th>
-                              <td class="px-4 py-3">Phone</td>
-                              <td class="px-4 py-3">Apple</td>
-                              <td class="px-4 py-3">1237</td>
-                              <td class="px-4 py-3">$999</td>
-                              <td class="px-4 py-3 flex items-center justify-end">
-                                  <button id="apple-iphone-14-dropdown-button" data-dropdown-toggle="apple-iphone-14-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                      </svg>
-                                  </button>
-                                  <div id="apple-iphone-14-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                      <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="apple-iphone-14-dropdown-button">
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                          </li>
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                          </li>
-                                      </ul>
-                                      <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                      </div>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr class="border-b dark:border-gray-700">
-                              <th scope="row" class="sticky left-0 bg-gray-200 px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iPad Air</th>
-                              <td class="px-4 py-3">Tablet</td>
-                              <td class="px-4 py-3">Apple</td>
-                              <td class="px-4 py-3">4578</td>
-                              <td class="px-4 py-3">$1199</td>
-                              <td class="px-4 py-3 flex items-center justify-end">
-                                  <button id="apple-ipad-air-dropdown-button" data-dropdown-toggle="apple-ipad-air-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                      </svg>
-                                  </button>
-                                  <div id="apple-ipad-air-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                      <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="apple-ipad-air-dropdown-button">
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                          </li>
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                          </li>
-                                      </ul>
-                                      <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                      </div>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr class="border-b dark:border-gray-700">
-                              <th scope="row" class="sticky left-0 bg-gray-200 px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Xbox Series S</th>
-                              <td class="px-4 py-3">Gaming/Console</td>
-                              <td class="px-4 py-3">Microsoft</td>
-                              <td class="px-4 py-3">56</td>
-                              <td class="px-4 py-3">$299</td>
-                              <td class="px-4 py-3 flex items-center justify-end">
-                                  <button id="xbox-series-s-dropdown-button" data-dropdown-toggle="xbox-series-s-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                      </svg>
-                                  </button>
-                                  <div id="xbox-series-s-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                      <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="xbox-series-s-dropdown-button">
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                          </li>
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                          </li>
-                                      </ul>
-                                      <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                      </div>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr class="border-b dark:border-gray-700">
-                              <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">PlayStation 5</th>
-                              <td class="px-4 py-3">Gaming/Console</td>
-                              <td class="px-4 py-3">Sony</td>
-                              <td class="px-4 py-3">78</td>
-                              <td class="px-4 py-3">$799</td>
-                              <td class="px-4 py-3 flex items-center justify-end">
-                                  <button id="playstation-5-dropdown-button" data-dropdown-toggle="playstation-5-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                      </svg>
-                                  </button>
-                                  <div id="playstation-5-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                      <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="playstation-5-dropdown-button">
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                          </li>
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                          </li>
-                                      </ul>
-                                      <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                      </div>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr class="border-b dark:border-gray-700">
-                              <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Xbox Series X</th>
-                              <td class="px-4 py-3">Gaming/Console</td>
-                              <td class="px-4 py-3">Microsoft</td>
-                              <td class="px-4 py-3">200</td>
-                              <td class="px-4 py-3">$699</td>
-                              <td class="px-4 py-3 flex items-center justify-end">
-                                  <button id="xbox-series-x-dropdown-button" data-dropdown-toggle="xbox-series-x-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                      </svg>
-                                  </button>
-                                  <div id="xbox-series-x-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                      <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="xbox-series-x-dropdown-button">
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                          </li>
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                          </li>
-                                      </ul>
-                                      <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                      </div>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr class="border-b dark:border-gray-700">
-                              <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple Watch SE</th>
-                              <td class="px-4 py-3">Watch</td>
-                              <td class="px-4 py-3">Apple</td>
-                              <td class="px-4 py-3">657</td>
-                              <td class="px-4 py-3">$399</td>
-                              <td class="px-4 py-3 flex items-center justify-end">
-                                  <button id="apple-watch-se-dropdown-button" data-dropdown-toggle="apple-watch-se-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                      </svg>
-                                  </button>
-                                  <div id="apple-watch-se-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                      <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="apple-watch-se-dropdown-button">
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                          </li>
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                          </li>
-                                      </ul>
-                                      <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                      </div>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr class="border-b dark:border-gray-700">
-                              <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">NIKON D850</th>
-                              <td class="px-4 py-3">Photo</td>
-                              <td class="px-4 py-3">Nikon</td>
-                              <td class="px-4 py-3">465</td>
-                              <td class="px-4 py-3">$599</td>
-                              <td class="px-4 py-3 flex items-center justify-end">
-                                  <button id="nikon-d850-dropdown-button" data-dropdown-toggle="nikon-d850-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                      </svg>
-                                  </button>
-                                  <div id="nikon-d850-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                      <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="nikon-d850-dropdown-button">
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                          </li>
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                          </li>
-                                      </ul>
-                                      <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                      </div>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr class="border-b dark:border-gray-700">
-                              <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Monitor BenQ EX2710Q</th>
-                              <td class="px-4 py-3">TV/Monitor</td>
-                              <td class="px-4 py-3">BenQ</td>
-                              <td class="px-4 py-3">354</td>
-                              <td class="px-4 py-3">$499</td>
-                              <td class="px-4 py-3 flex items-center justify-end">
-                                  <button id="benq-ex2710q-dropdown-button" data-dropdown-toggle="benq-ex2710q-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                      </svg>
-                                  </button>
-                                  <div id="benq-ex2710q-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                      <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="benq-ex2710q-dropdown-button">
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                          </li>
-                                          <li>
-                                              <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                          </li>
-                                      </ul>
-                                      <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                      </div>
-                                  </div>
-                              </td>
-                          </tr>
+
+
                       </tbody>
                   </table>
               </div>
