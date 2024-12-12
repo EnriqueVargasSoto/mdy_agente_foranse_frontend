@@ -17,7 +17,8 @@ import { SiderbarComponent } from './components/siderbar/siderbar.component';
   ],
   exports: [
     HeaderComponent,
-    SiderbarComponent
+    SiderbarComponent,
+    FooterComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] // Permite cualquier elemento personalizado
 })
