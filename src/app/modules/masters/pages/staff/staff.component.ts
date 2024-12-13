@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Drawer, Modal } from 'flowbite';
 import { ApiServiceService } from 'src/app/services/api-service/api-service.service';
 
 @Component({
@@ -24,6 +25,8 @@ export class StaffComponent implements OnInit{
   total: number = 0;
 
   loading: boolean = true;
+
+  isDrawerOpen = false;
 
   constructor(private http: HttpClient){
 
@@ -67,5 +70,22 @@ export class StaffComponent implements OnInit{
 
   clearHighlight(): void {
     this.highlightedColumn = null;
+  }
+
+  clickDrawer(){
+    const $modalElement: HTMLElement = document.querySelector('#extralarge-modal')!;
+
+    const modal = new Modal($modalElement);
+    this.isDrawerOpen = true;
+    // show the drawer
+    modal.show();
+  }
+
+  closeClickDrawer(){
+    const $modalElement: HTMLElement = document.querySelector('#extralarge-modal')!;
+    const modal = new Modal($modalElement);
+    this.isDrawerOpen = false;
+    // show the drawer
+    modal.hide();
   }
 }
