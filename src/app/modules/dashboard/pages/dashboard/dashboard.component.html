@@ -1,4 +1,4 @@
-<p>dashboard works!</p>
+<!-- <p>dashboard works!</p>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
   <div
     class="border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64"
@@ -12,4 +12,37 @@
   <div
     class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
   ></div>
-</div>
+</div> -->
+
+
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700">
+  <li class="mb-10 ms-4" *ngFor="let hora of horas">
+      <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+      <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{hora.hour}}</time>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{hora.hour}}</h3>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div *ngFor="let screen of hora.screens">
+            <img class="h-40 max-w-full rounded-lg" src="{{screen.url}}" alt="">
+            <span class="dark:text-white text-black" style="color: white;">{{ screen.created_at | date: 'HH:mm:ss' }}</span>
+        </div>
+
+      </div>
+
+
+  </li>
+  <!-- <li class="mb-10 ms-4">
+      <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+      <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March 2022</time>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Marketing UI design in Figma</h3>
+      <p class="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
+  </li>
+  <li class="ms-4">
+      <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+      <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">April 2022</time>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">E-Commerce UI code in Tailwind CSS</h3>
+      <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+  </li> -->
+</ol>
+
