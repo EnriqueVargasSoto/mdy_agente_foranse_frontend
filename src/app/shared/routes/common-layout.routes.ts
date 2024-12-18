@@ -8,5 +8,9 @@ export const CommonLayout_ROUTES: Routes = [
   {
     path: 'maestras',
     loadChildren: () => import('../../modules/masters/masters.module').then(m => m.MastersModule)
+  },
+  {
+    path: 'capturas',
+    loadChildren: () => import('../../modules/screen/screen.module').then(m => m.ScreenModule)
   }
 ];

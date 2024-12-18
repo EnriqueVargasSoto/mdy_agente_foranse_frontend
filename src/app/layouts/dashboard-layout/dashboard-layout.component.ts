@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 export type Theme = 'dark' | 'light';
@@ -18,6 +19,9 @@ export class DashboardLayoutComponent implements OnInit {
 
   isMenuOpen = true;
 
+  breadcrumbs: { label: string; url: string }[] = [];
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute){}
 
 
   ngOnInit(): void {
@@ -46,6 +50,12 @@ export class DashboardLayoutComponent implements OnInit {
           document.documentElement.classList.remove('dark');
         }
       });
+
+    /* this.router.events.subscribe(() => {
+      this.generateBreadcrumbs();
+    });
+
+    this.generateBreadcrumbs(); */
   }
 
   setTheme(theme: Theme) {
@@ -70,5 +80,20 @@ export class DashboardLayoutComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
+  generateBreadcrumbs() {
+    const urlSegments = this.router.url.split('/');
+    this.breadcrumbs = [];
+
+    let url = '';
+    urlSegments.forEach((segment) => {
+      if (segment) {
+        url += `/${segment}`;
+        this.breadcrumbs.push({ label: segment, url });
+      }
+    });
+
+    console.log('url: ',url);
+    console.log('enunciado: ', this.breadcrumbs);
+  }
 
 }

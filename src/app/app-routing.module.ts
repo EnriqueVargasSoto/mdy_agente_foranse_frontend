@@ -6,6 +6,8 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { MastersModule } from './modules/masters/masters.module';
 import { FullLayout_ROUTES } from './shared/routes/full-layout.routes';
 import { CommonLayout_ROUTES } from './shared/routes/common-layout.routes';
+import { authGuard } from './guard/auth.guard';
+import { publicGuard } from './guard/public.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, // Redirección inicial opcional
@@ -13,12 +15,14 @@ const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
-    children: FullLayout_ROUTES
+    children: FullLayout_ROUTES,
+    canActivate: [publicGuard]
   },
   {
     path: '',
     component: DashboardLayoutComponent,
-    children:CommonLayout_ROUTES
+    children:CommonLayout_ROUTES,
+    canActivate: [authGuard]
   }
 ];
 

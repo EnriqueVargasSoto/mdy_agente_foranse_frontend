@@ -1,0 +1,147 @@
+<div class="rounded-lg border-gray-300 dark:border-gray-600 h-full mb-4">
+
+  <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+    <div class="mx-auto max-w-screen-2xl">
+        <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+                <div class="flex-1 flex items-center space-x-2">
+                    <h1 class="text-gray-500 font-semibold " style="font-size: 25px;">Capturas</h1>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+
+              <div class="flex-shrink-0 flex flex-col items-start md:flex-row md:items-center lg:justify-end space-y-3 md:space-y-0 md:space-x-3">
+                <form>
+                  <div class="grid gap-1 mb-6 md:grid-cols-12">
+                      <div>
+                          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pais</label>
+
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option *ngFor="let pais of paises" [value]="pais.Id">{{pais.vc_Descripcion}}</option>
+                          </select>
+                      </div>
+                      <div>
+                          <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Segmento</label>
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option *ngFor="let segmento of segmentos" [value]="segmento.Id">{{segmento.vc_Descripcion}}</option>
+                          </select>
+                      </div>
+                      <div>
+                          <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Centro</label>
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option *ngFor="let centro of centros" [value]="centro.Id">{{centro.vc_Descripcion}}</option>
+                          </select>
+                      </div>
+                      <div>
+                          <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Campaña</label>
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option *ngFor="let campana of campanas" [value]="campana.Id">{{campana.vc_Descripcion}}</option>
+                          </select>
+                      </div>
+                      <div>
+                          <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha</label>
+                          <div class="relative max-w-sm">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                               <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                </svg>
+                            </div>
+                            <input id="datepicker-autohide" datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                          </div>
+                      </div>
+                      <div>
+                        <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Website URL</label>
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>                      </div>
+
+                  </div>
+
+              </form>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto ml-5 mr-5 sm:rounded-lg px-4" style="max-height: calc(10 * 65px); overflow-y: auto;">
+
+              <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                <li class="mb-10 ms-4" *ngFor="let hora of horas">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{hora.hour}}</h3>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                      <div *ngFor="let screen of hora.screens">
+                          <img class="h-40 max-w-full rounded-lg" src="{{screen.url}}" alt="" (click)="openModal(screen)">
+                          <span class="dark:text-white text-black" style="color: white;">{{ screen.created_at | date: 'HH:mm:ss' }}</span>
+                      </div>
+
+                    </div>
+                </li>
+              </ol>
+            </div>
+        </div>
+    </div>
+  </section>
+
+
+
+  <!-- Plantilla para el estado de carga -->
+  <ng-template #loadingTemplate>
+    <div class="flex justify-center items-center h-32">
+      <div role="status">
+        <svg
+          aria-hidden="true"
+          class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+          viewBox="0 0 100 101"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9765 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9765 100 50.5908ZM9.08148 50.5908C9.08148 74.3255 25.6653 91.9093 49.4 91.9093C73.1347 91.9093 89.7185 74.3255 89.7185 50.5908C89.7185 26.8561 73.1347 9.27232 49.4 9.27232C25.6653 9.27232 9.08148 26.8561 9.08148 50.5908Z"
+            fill="currentColor"
+          />
+          <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.553C95.2932 28.8227 92.871 24.3693 89.8167 20.348C85.8452 15.1192 80.8826 10.7235 75.2124 7.4129C69.5422 4.10234 63.2754 1.94025 56.7226 1.05108C51.7666 0.367831 46.7461 0.446529 41.8351 1.27873C39.3429 1.69826 37.8735 4.19047 38.5106 6.61589C39.1477 9.04131 41.6082 10.4717 44.1004 10.1071C47.851 9.54543 51.6811 9.52603 55.448 10.0496C60.864 10.7766 66.0922 12.605 70.9056 15.3912C75.7191 18.1775 79.9995 21.8611 83.5661 26.2228C86.364 29.786 88.6393 33.7322 90.2833 37.8898C91.0835 39.8312 93.5422 40.7079 93.9676 39.0409Z"
+            fill="currentFill"
+          />
+        </svg>
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Extra Large Modal -->
+  <div id="extralarge-modal-image" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-7xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                  {{screenModal.tracking?.campana_detalle?.persona?.vc_Nombres}} {{screenModal.tracking?.campana_detalle?.persona?.vc_ApePaterno}} {{screenModal.tracking?.campana_detalle?.persona?.vc_ApeMaterno}} - {{ screenModal!.created_at | date: 'HH:mm' }}
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" (click)="closeModal()">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4" style="margin-left: 2%;margin-right: 2%;">
+              <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter  hover:grayscale-0" style="max-width: 100%!important;">
+                <a href="#">
+                  <img class="rounded-lg" [src]="screenModal!.url" alt="image description">
+                </a>
+                <!-- <figcaption class="absolute px-4 text-lg text-white bottom-6">
+                    <p>Do you want to get notified when a new component is added to Flowbite?</p>
+                </figcaption> -->
+              </figure>
+            </div>
+            <!-- Modal footer -->
+            <!-- <div class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button data-modal-hide="extralarge-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                <button data-modal-hide="extralarge-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
+            </div> -->
+        </div>
+    </div>
+  </div>
+</div>
