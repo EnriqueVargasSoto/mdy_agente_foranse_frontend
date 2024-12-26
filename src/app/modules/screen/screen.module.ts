@@ -5,7 +5,6 @@ import { ScreenRoutingModule } from './screen-routing.module';
 import { FormsModule } from '@angular/forms';
 
 
-
 @NgModule({
   declarations: [
     ScreenComponent
@@ -13,7 +12,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ScreenRoutingModule,
-    FormsModule
+    FormsModule,
+
+
   ],
   providers: [DatePipe]
 })

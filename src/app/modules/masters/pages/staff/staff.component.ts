@@ -28,15 +28,26 @@ export class StaffComponent implements OnInit{
 
   isDrawerOpen = false;
 
+  nivel: number = 0;
+  area: number = 0;
+
+  persona: any;
+
+  tiemposCaptura: number[] = [0,1,9,15,30]
+
+
   constructor(private http: HttpClient){
 
   }
 
   async ngOnInit() {
+    const persona = localStorage.getItem('persona');
+    this.persona = JSON.parse(persona!);
 
+    this.nivel = this.persona.in_Nivel -1;
+    this.area = this.persona.in_AreaId;
 
-    await this.listPersonas('http://127.0.0.1:8000/api/personas?page=1');
-
+    await this.listPersonas('http://10.200.40.71:8000/api/personas?page=1');
 
 
   }
@@ -45,7 +56,7 @@ export class StaffComponent implements OnInit{
 
     this.loading= true;
 
-    this.http.get(url).subscribe((response:any) => {
+    this.http.get(url+'&nivel='+this.nivel+'&area='+this.area).subscribe((response:any) => {
       this.personas = response.data.data;
 
       this.current_page = response.data.current_page;
@@ -87,5 +98,16 @@ export class StaffComponent implements OnInit{
     this.isDrawerOpen = false;
     // show the drawer
     modal.hide();
+  }
+
+  actualizaTiempoCaptura(in_PersonaId: number, tiempo: number){
+    const datos = {
+      "in_PersonaId" : in_PersonaId,
+      "intervalo" : tiempo
+    }
+    console.log('datos', datos);
+    this.http.post('http://10.200.40.71:8000/api/frecuencias', datos).subscribe((resp:any) =>{
+      this.ngOnInit();
+    });
   }
 }

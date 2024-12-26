@@ -1,8 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { Modal } from 'flowbite';
 import { Datum, Screen } from '../../interfaces/interfaces';
+import { Datepicker, DatepickerInterface, DatepickerOptions, InstanceOptions, Modal } from 'flowbite';
+//import { Datepicker } from 'flowbite-datepicker';
+
+
+//import { Datepicker } from 'flowbite-datepicker';
 
 
 
@@ -14,52 +18,37 @@ import { Datum, Screen } from '../../interfaces/interfaces';
 export class ScreenComponent implements OnInit{
 
   horas: any[] = [];
-  loading: boolean = true;
-  inicioDate: string='';
-  finDate: string='';
+  loading: boolean = false;
 
-  fecha: any;
-
-  startDate: Date = new Date();
-  endDate: Date = new Date();
-
-  formattedDate: string='';
-
-  screenModal: Screen = {};// | undefined;
-  //url: Screen = new Screen;
+  screenModal: Screen = {};
 
   paises: any[] = [];
   segmentos: any[] = [];
   centros: any[] = [];
   campanas: any[] = [];
+  personas: any[] = [];
+
+  stringFecha: string = '';
+
+  centro: string = '';
+  segmento: string = '';
+  campana: string = '';
+
+  fechaString: string = '';
+
+  in_PersonaId: string='';
+
+  nombrePersona = '';
 
   constructor(private http: HttpClient, private datePipe: DatePipe){
-    const date = new Date('12/01/2024'); // Fecha original
-    this.formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd')!; // Conver
+
   }
 
   ngOnInit(): void {
-    this.fecha = new Date();
-    this.inicioDate = this.datePipe.transform(this.fecha, 'MM/dd/yyyy') || '';
-    console.log(this.inicioDate);
-    this.finDate = this.datePipe.transform(this.fecha, 'MM/dd/yyyy') || '';
-    //this.listHOras(this.inicioDate, this.finDate);
-
-    this.cargarPaises();
-    this.cargarSegmentos();
+    const fecha = new Date();
+    this.fechaString = this.datePipe.transform(fecha, 'dd/MM/yyyy') || '';
+    this.abrirCalendario();
     this.cargarCentros();
-    this.cargarCampanas();
-
-  }
-
-  cargarPaises(){
-    const paises = localStorage.getItem('paises');
-    this.paises = JSON.parse(paises!);
-  }
-
-  cargarSegmentos(){
-    const segmentos = localStorage.getItem('segmentos');
-    this.segmentos = JSON.parse(segmentos!);
   }
 
   cargarCentros(){
@@ -67,45 +56,128 @@ export class ScreenComponent implements OnInit{
     this.centros = JSON.parse(centros!);
   }
 
-  cargarCampanas(){
-    const campanas = localStorage.getItem('campana');
-    this.campanas = JSON.parse(campanas!);
-  }
 
-  listHOras(fechaInicio: string, fechaFin: string){
-    this.loading= true;
-    console.log('asdfasd', this.startDate);
-    this.http.get('http://10.200.40.71:8000/api/screens?inicio='+fechaInicio+'&fin='+fechaFin,).subscribe((resp: any) => {
+  listHOras(date: string){
+
+    this.horas = [];
+
+    this.http.get('http://10.200.40.71:8000/api/screens?date='+date+'&in_PersonaId='+this.in_PersonaId).subscribe((resp: any) => {
       this.horas = resp.data;
-      console.log(this.horas);
+
       this.loading= false;
     });
   }
 
-  onDateChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    console.log('Fecha seleccionada:', input.value);
-  }
-
   openModal(screen: any){
     this.screenModal = screen;
-    console.log(this.screenModal);
-    // set the modal menu element
+
     const $targetEl = document.getElementById('extralarge-modal-image');
 
     const modal = new Modal($targetEl/*, options, instanceOptions*/);
 
-    // show the modal
     modal.show();
   }
 
   closeModal(){
-    // set the modal menu element
+
     const $targetEl = document.getElementById('extralarge-modal-image');
 
     const modal = new Modal($targetEl/*, options, instanceOptions*/);
 
-    // show the modal
     modal.hide();
+  }
+
+  obtenerScreen(){
+    // set the target element of the input field
+
+    this.loading = true;
+
+    const $datepickerEl = document.getElementById('datepicker-autohide') as HTMLInputElement;
+
+    const dateValue = $datepickerEl!.value;
+
+    this.listHOras(dateValue);
+  }
+
+  listarSegmentos(event: Event){
+    this.segmentos = [];
+    this.campanas = [];
+    this.personas = [];
+    const selectElement = event.target as HTMLSelectElement;
+    const centroId = selectElement.value;
+    this.centro = centroId;
+    this.http.get('http://10.200.40.71:8000/api/segmentos/'+this.centro).subscribe((resp: any) => {
+      this.segmentos = resp.data;
+    });
+  }
+
+  listarCampanas(event: Event): void {
+    this.campanas = [];
+    this.personas = [];
+    const selectElement = event.target as HTMLSelectElement;
+    const segmento = selectElement.value;
+    this.segmento = segmento;
+    this.http.get('http://10.200.40.71:8000/api/campanas?in_CentroId='+this.centro+'&in_SegmentoId='+this.segmento).subscribe((resp: any) => {
+      this.campanas = resp.data;
+    });
+  }
+
+  listarPersonas(event: Event): void {
+    this.personas = [];
+    const selectElement = event.target as HTMLSelectElement;
+    const campana = selectElement.value;
+    this.campana = campana;
+    this.http.get('http://10.200.40.71:8000/api/personas-campana?in_CentroId='+this.centro+'&in_SegmentoId='+this.segmento+'&in_CamapanaId='+this.campana+'&in_Nivel=2&in_AreaId=15').subscribe((resp: any) => {
+      this.personas = resp.data;
+    });
+  }
+
+  selectPersona(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const persona = selectElement.value;
+    this.in_PersonaId = persona;
+    // Busca la persona seleccionada por id
+   const selectedPersona = this.personas.find(persona => persona.id.toString() === this.in_PersonaId);
+   console.log(selectedPersona);
+   this.nombrePersona = selectedPersona.vc_Nombres+' '+selectedPersona.vc_ApePaterno+' '+selectedPersona.vc_ApeMaterno
+  }
+
+  abrirCalendario(){
+    const $datepickerEl: HTMLInputElement = document.getElementById('datepicker-autohide') as HTMLInputElement;
+
+    // optional options with default values and callback functions
+    const options: DatepickerOptions = {
+      defaultDatepickerId: 'datepicker-autohide',
+      autohide: true,
+      format: 'dd/mm/yyyy',
+      maxDate: null,
+      minDate: null,
+      orientation: 'bottom',
+      buttons: false,
+      autoSelectToday: 0,
+      title: null,
+      rangePicker: false,
+      onShow: () => {},
+      onHide: () => {},
+    };
+
+    // instance options object
+    const instanceOptions: InstanceOptions = {
+    id: 'datepicker-custom-example',
+    override: true
+    };
+
+    /*
+    * $datepickerEl: required
+    * options: optional
+    * instanceOptions: optional
+    */
+    const datepicker: DatepickerInterface = new Datepicker(
+      $datepickerEl,
+      options,
+      instanceOptions
+    );
+
+    datepicker.init();
   }
 }

@@ -9,59 +9,66 @@
                 </div>
             </div>
 
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+            <div class="flex-shrink-0 flex flex-col items-start md:flex-row md:items-center lg:justify-end space-y-3 md:space-y-0 md:space-x-3 p-4">
 
-              <div class="flex-shrink-0 flex flex-col items-start md:flex-row md:items-center lg:justify-end space-y-3 md:space-y-0 md:space-x-3">
-                <form>
-                  <div class="grid gap-1 mb-6 md:grid-cols-12">
-                      <div>
-                          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pais</label>
+              <form>
+                <div class="grid gap-4 mb-6 md:grid-cols-6">
 
-                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option *ngFor="let pais of paises" [value]="pais.Id">{{pais.vc_Descripcion}}</option>
-                          </select>
-                      </div>
-                      <div>
-                          <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Segmento</label>
-                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option *ngFor="let segmento of segmentos" [value]="segmento.Id">{{segmento.vc_Descripcion}}</option>
-                          </select>
-                      </div>
-                      <div>
-                          <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Centro</label>
-                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option *ngFor="let centro of centros" [value]="centro.Id">{{centro.vc_Descripcion}}</option>
-                          </select>
-                      </div>
-                      <div>
-                          <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Campaña</label>
-                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option *ngFor="let campana of campanas" [value]="campana.Id">{{campana.vc_Descripcion}}</option>
-                          </select>
-                      </div>
-                      <div>
-                          <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha</label>
-                          <div class="relative max-w-sm">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                               <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                                </svg>
-                            </div>
-                            <input id="datepicker-autohide" datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                    <div>
+                      <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Centro</label>
+                      <select id="countries" (change)="listarSegmentos($event)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option>-- Seleccione --</option>
+                        <option *ngFor="let centro of centros" [value]="centro.Id" >{{centro.vc_Descripcion}}</option>
+                      </select>
+                    </div>
+                    <div>
+                        <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Segmento</label>
+                        <select id="countries" (change)="listarCampanas($event)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          <option>-- Seleccione --</option>
+                          <option *ngFor="let segmento of segmentos" [value]="segmento.Id">{{segmento.vc_Descripcion}}</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Campaña</label>
+                        <select id="countries" (change)="listarPersonas($event)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          <option>-- Seleccione --</option>
+                          <option *ngFor="let campana of campanas" [value]="campana.Id">{{campana.vc_Descripcion}}</option>
+                        </select>
+                    </div>
+
+                    <div>
+                      <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Persona</label>
+                      <select id="countries" (change)="selectPersona($event)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option>-- Seleccione --</option>
+                        <option *ngFor="let persona of personas" [value]="persona.id">{{persona.vc_Nombres}} {{persona.vc_ApePaterno}} {{persona.vc_ApeMaterno}}</option>
+                      </select>
+                    </div>
+                    <div>
+                        <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha</label>
+
+                        <div class="relative max-w-sm">
+                          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                              </svg>
                           </div>
-                      </div>
-                      <div>
-                        <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Website URL</label>
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>                      </div>
+                          <input id="datepicker-autohide" datepicker datepicker-autohide datepicker-format="dd/mm/yyyy" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" value="{{fechaString}}">
+                        </div>
+                    </div>
+                    <div style="padding-top: 1.75rem;">
+                      <button type="button" (click)="obtenerScreen()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+                    </div>
 
-                  </div>
+                </div>
 
               </form>
-              </div>
             </div>
 
-            <div class="overflow-x-auto ml-5 mr-5 sm:rounded-lg px-4" style="max-height: calc(10 * 65px); overflow-y: auto;">
 
+
+            <div class="overflow-x-auto ml-5 mr-5 sm:rounded-lg px-4" style="max-height: calc(7.5 * 65px); overflow-y: auto;" *ngIf="!loading; else loadingTemplate">
+              <h3>{{nombrePersona}}</h3>
               <ol class="relative border-s border-gray-200 dark:border-gray-700">
                 <li class="mb-10 ms-4" *ngFor="let hora of horas">
                     <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
@@ -70,7 +77,7 @@
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                       <div *ngFor="let screen of hora.screens">
                           <img class="h-40 max-w-full rounded-lg" src="{{screen.url}}" alt="" (click)="openModal(screen)">
-                          <span class="dark:text-white text-black" style="color: white;">{{ screen.created_at | date: 'HH:mm:ss' }}</span>
+                          <span class="dark:text-white text-black">{{ screen.created_at | date: 'HH:mm:ss' }}</span>
                       </div>
 
                     </div>
@@ -131,16 +138,8 @@
                 <a href="#">
                   <img class="rounded-lg" [src]="screenModal!.url" alt="image description">
                 </a>
-                <!-- <figcaption class="absolute px-4 text-lg text-white bottom-6">
-                    <p>Do you want to get notified when a new component is added to Flowbite?</p>
-                </figcaption> -->
               </figure>
             </div>
-            <!-- Modal footer -->
-            <!-- <div class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="extralarge-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
-                <button data-modal-hide="extralarge-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
-            </div> -->
         </div>
     </div>
   </div>
