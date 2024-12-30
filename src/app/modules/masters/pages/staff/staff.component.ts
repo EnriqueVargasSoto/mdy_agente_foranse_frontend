@@ -33,7 +33,7 @@ export class StaffComponent implements OnInit{
 
   persona: any;
 
-  tiemposCaptura: number[] = [0,1,9,15,30]
+  tiemposCaptura: number[] = [0,3,9,15,30]
 
 
   constructor(private http: HttpClient){

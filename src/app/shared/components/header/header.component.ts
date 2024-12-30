@@ -22,7 +22,11 @@ export class HeaderComponent {
   @Output() buttonClickToggleCollapsed = new EventEmitter<void>();
   @Output() buttonClickToggleTheme = new EventEmitter<void>();
 
-  constructor(private authService: AuthService, private router: Router){}
+  persona: any;
+
+  constructor(private authService: AuthService, private router: Router){
+    this.cargarPersona();
+  }
 
   toggleCollapsed() {
     this.buttonClickToggleCollapsed.emit();
@@ -85,4 +89,8 @@ export class HeaderComponent {
     dropdown.show();
   }
 
+  cargarPersona(){
+    const persona = localStorage.getItem('persona');
+    this.persona = JSON.parse(persona!);
+  }
 }
