@@ -200,7 +200,7 @@ export class DashboardComponent implements OnInit{
   }
 
   listHOras(){
-    this.http.get('http://10.200.40.71:8000/api/screens').subscribe((resp: any) => {
+    this.http.get('http://18.189.173.243/api/screens').subscribe((resp: any) => {
       this.horas = resp.data;
       console.log(this.horas[0]);
     });

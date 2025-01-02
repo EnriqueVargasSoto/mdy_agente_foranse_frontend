@@ -47,7 +47,7 @@ export class StaffComponent implements OnInit{
     this.nivel = this.persona.in_Nivel -1;
     this.area = this.persona.in_AreaId;
 
-    await this.listPersonas('http://10.200.40.71:8000/api/personas?page=1');
+    await this.listPersonas('http://18.189.173.243/api/personas?page=1');
 
 
   }
@@ -106,7 +106,7 @@ export class StaffComponent implements OnInit{
       "intervalo" : tiempo
     }
     console.log('datos', datos);
-    this.http.post('http://10.200.40.71:8000/api/frecuencias', datos).subscribe((resp:any) =>{
+    this.http.post('http://18.189.173.243/api/frecuencias', datos).subscribe((resp:any) =>{
       this.ngOnInit();
     });
   }

@@ -61,7 +61,7 @@ export class ScreenComponent implements OnInit{
 
     this.horas = [];
 
-    this.http.get('http://10.200.40.71:8000/api/screens?date='+date+'&in_PersonaId='+this.in_PersonaId).subscribe((resp: any) => {
+    this.http.get('http://18.189.173.243/api/screens?date='+date+'&in_PersonaId='+this.in_PersonaId).subscribe((resp: any) => {
       this.horas = resp.data;
 
       this.loading= false;
@@ -106,7 +106,7 @@ export class ScreenComponent implements OnInit{
     const selectElement = event.target as HTMLSelectElement;
     const centroId = selectElement.value;
     this.centro = centroId;
-    this.http.get('http://10.200.40.71:8000/api/segmentos/'+this.centro).subscribe((resp: any) => {
+    this.http.get('http://18.189.173.243/api/segmentos/'+this.centro).subscribe((resp: any) => {
       this.segmentos = resp.data;
     });
   }
@@ -117,7 +117,7 @@ export class ScreenComponent implements OnInit{
     const selectElement = event.target as HTMLSelectElement;
     const segmento = selectElement.value;
     this.segmento = segmento;
-    this.http.get('http://10.200.40.71:8000/api/campanas?in_CentroId='+this.centro+'&in_SegmentoId='+this.segmento).subscribe((resp: any) => {
+    this.http.get('http://18.189.173.243/api/campanas?in_CentroId='+this.centro+'&in_SegmentoId='+this.segmento).subscribe((resp: any) => {
       this.campanas = resp.data;
     });
   }
@@ -127,7 +127,7 @@ export class ScreenComponent implements OnInit{
     const selectElement = event.target as HTMLSelectElement;
     const campana = selectElement.value;
     this.campana = campana;
-    this.http.get('http://10.200.40.71:8000/api/personas-campana?in_CentroId='+this.centro+'&in_SegmentoId='+this.segmento+'&in_CamapanaId='+this.campana+'&in_Nivel=2&in_AreaId=15').subscribe((resp: any) => {
+    this.http.get('http://18.189.173.243/api/personas-campana?in_CentroId='+this.centro+'&in_SegmentoId='+this.segmento+'&in_CamapanaId='+this.campana+'&in_Nivel=2&in_AreaId=15').subscribe((resp: any) => {
       this.personas = resp.data;
     });
   }

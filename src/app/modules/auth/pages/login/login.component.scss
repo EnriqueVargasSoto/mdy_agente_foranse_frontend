@@ -1,0 +1,43 @@
+/* Para asegurar que la imagen se oculte en móviles */
+
+
+/* Personalización adicional */
+.flex {
+  display: flex
+;
+  align-items: center;
+}
+
+.k-separator.k-separator--space-lg {
+  margin: 2.5rem 0;
+}
+
+.k-separator.k-separator--border-solid {
+  border-bottom: 1px solid #ebedf2;
+}
+
+.k-separator {
+  margin: 0;
+  height: 0;
+}
+
+.footer {
+  //background-color: #333; /* Color de fondo */
+  color: black;           /* Color del texto */
+  text-align: left;     /* Alineación centrada */
+  padding: 20px;          /* Espaciado alrededor */
+  position: absolute;     /* Para que se quede al fondo */
+  bottom: 0;              /* Alinearlo en la parte inferior */
+  width: 100%;            /* Ancho completo */
+}
+
+.footer p {
+  margin: 0;              /* Eliminar márgenes */
+  font-size: 14px;        /* Tamaño de fuente */
+}
+
+.flex-baner{
+  display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+}

@@ -17,9 +17,13 @@ export class LoginComponent {
 
   loginForm: FormGroup;
 
-  base_url = 'http://10.200.40.71:8000/api/';
+  base_url = 'http://18.189.173.243/api/';//'http://10.200.40.71:8000/api/';
 
   mensaje_error: string = '';
+
+  showPassword = false;
+
+  errorMessage: string | null = null;
 
   constructor(private authService: AuthService, private router: Router, private http: HttpClient,private fb: FormBuilder){
     this.loginForm = this.fb.group({
@@ -54,6 +58,10 @@ export class LoginComponent {
 
   closeToast(): void {
     this.showToast = false;
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 
 }
