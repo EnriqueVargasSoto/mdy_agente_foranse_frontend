@@ -5,6 +5,8 @@ import { Dismiss } from 'flowbite';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Credenciales } from '../../interfaces/interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Modal } from 'flowbite';
+import { ApiServiceService } from 'src/app/services/api-service/api-service.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,9 @@ export class LoginComponent {
 
   errorMessage: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router, private http: HttpClient,private fb: FormBuilder){
+  usuarioRecovery: string = '';
+
+  constructor(private authService: AuthService, private router: Router, private http: HttpClient,private fb: FormBuilder, private apiService: ApiServiceService){
     this.loginForm = this.fb.group({
       vc_usuario: ['', [Validators.required]],
       vc_clave: ['', [Validators.required, Validators.minLength(6)]],
@@ -40,10 +44,11 @@ export class LoginComponent {
     this.http.post(this.base_url+'auth/login', this.loginForm.value).subscribe((resp: any) => {
 
       this.authService.login(resp.data);
-      return this.router.navigate(['/dashboard']);
+      return this.router.navigate(['/capturas']);
     }, (error) =>{
       this.mensaje_error = error.error.error;
       this.showToastMessage()
+      this.openModal('popup-modal');
     });
 
   }
@@ -62,6 +67,38 @@ export class LoginComponent {
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
+  }
+
+  openModal(idModal: string){
+    // set the modal menu element
+    const $targetEl = document.getElementById(idModal);
+    const modal = new Modal($targetEl);
+
+    this.usuarioRecovery = '';
+
+    // show the modal
+    modal.show();
+  }
+
+  recoveryPassword(idModal:string){
+    if (this.usuarioRecovery != '') {
+      this.apiService.consulta('recovery-password/'+this.usuarioRecovery,'get').then((resp) => {
+        console.log(resp);
+        this.closeModal(idModal);
+        this.openModal('popup-modal-success')
+      });
+    }else{
+      this.openModal('popup-modal')
+    }
+  }
+
+  closeModal(idModal: string){
+    // set the modal menu element
+    const $targetEl = document.getElementById(idModal);
+    const modal = new Modal($targetEl);
+
+    // show the modal
+    modal.hide();
   }
 
 }

@@ -41,3 +41,55 @@
       align-items: flex-end;
       justify-content: flex-end;
 }
+
+.titulo {
+  font-family: 'Syncopate', sans-serif;
+  text-transform: uppercase;
+  font-style: normal;
+  color: #4a575f;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0.25rem !important;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.detalle-titulo {
+  display: block;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  margin-bottom: 1rem;
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+.btn-acceder{
+  background-color: #315b2c;
+  border-color: #3f7039;
+  font-family: 'Syncopate', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;border-radius: 2rem;    margin-bottom: 2rem;
+}
+
+.recovery-password{
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  color: #5867dd;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.titulo-banner{
+  background-image: url(http://fuabprueba.aplicacionesmdy.com/public/assets/media/slider-home-1.webp);
+  width: 75%;
+  height: 100vh;
+  background-position: right bottom;
+  background-size: cover;
+}

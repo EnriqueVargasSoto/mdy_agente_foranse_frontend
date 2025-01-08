@@ -35,6 +35,8 @@ export class StaffComponent implements OnInit{
 
   tiemposCaptura: number[] = [0,3,9,15,30]
 
+  checkPrincipal: boolean = false;
+
 
   constructor(private http: HttpClient){
 
@@ -58,6 +60,11 @@ export class StaffComponent implements OnInit{
 
     this.http.get(url+'&nivel='+this.nivel+'&area='+this.area).subscribe((response:any) => {
       this.personas = response.data.data;
+
+      this.personas = this.personas.map(persona => ({
+        ...persona,  // Copia los datos existentes
+        selected: false  // Agrega el atributo 'selected'
+      }));
 
       this.current_page = response.data.current_page;
       this.from = response.data.from;
@@ -110,4 +117,41 @@ export class StaffComponent implements OnInit{
       this.ngOnInit();
     });
   }
+
+  checkMasivo(){
+    console.log(this.checkPrincipal);
+
+    if (this.checkPrincipal) {
+      this.personas.forEach(element => {
+        element.selected = true;
+      });
+    } else {
+      this.personas.forEach(element => {
+        element.selected = false;
+      });
+    }
+
+  }
+
+  actualizaTiempoMasivo(tiempo: number){
+
+    this.personas.forEach((element) => {
+      if (element.selected) {
+        const datos = {
+          "in_PersonaId" : element.id,
+          "intervalo" : tiempo
+        }
+        console.log('datos', datos);
+        this.http.post('http://18.189.173.243/api/frecuencias', datos).subscribe((resp:any) =>{
+
+
+        });
+      };
+      });
+
+      this.ngOnInit();
+      this.checkPrincipal = false
+  }
+
+
 }
