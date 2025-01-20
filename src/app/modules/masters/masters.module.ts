@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MastersRoutingModule } from './masters-routing.module';
 import { ToolsComponent } from './pages/tools/tools.component';
 import { StaffComponent } from './pages/staff/staff.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     MastersRoutingModule,
 
+    ReactiveFormsModule,
     FormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] // Permite Web Components

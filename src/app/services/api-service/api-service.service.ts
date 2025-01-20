@@ -25,6 +25,10 @@ export class ApiServiceService {
         return await this.http.patch(this.base_url+url, body).toPromise();
         break;
 
+      case 'put':
+        return await this.http.put(this.base_url+url, body).toPromise();
+        break;
+
       case 'delete':
         return await this.http.delete(this.base_url+url).toPromise();
         break;

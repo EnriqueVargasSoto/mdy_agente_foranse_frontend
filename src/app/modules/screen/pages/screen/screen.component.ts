@@ -62,9 +62,16 @@ export class ScreenComponent implements OnInit{
     this.horas = [];
 
     this.http.get('http://18.189.173.243/api/screens?date='+date+'&in_PersonaId='+this.in_PersonaId).subscribe((resp: any) => {
-      this.horas = resp.data;
+      if (resp.data.length > 0) {
+        this.horas = resp.data;
+        this.loading= false;
+      } else {
+        this.loading= false;
+        this.openModalNotification('popup-modal');
+      }
 
-      this.loading= false;
+
+
     });
   }
 
@@ -106,7 +113,7 @@ export class ScreenComponent implements OnInit{
     const selectElement = event.target as HTMLSelectElement;
     const centroId = selectElement.value;
     this.centro = centroId;
-    this.http.get('http://18.189.173.243/api/segmentos/'+this.centro).subscribe((resp: any) => {
+    this.http.get('http://18.189.173.243/api/segmentos').subscribe((resp: any) => {
       this.segmentos = resp.data;
     });
   }
@@ -179,5 +186,44 @@ export class ScreenComponent implements OnInit{
     );
 
     datepicker.init();
+  }
+
+  formateoHora(timestamp: string){
+
+    if (timestamp) {
+      const date = new Date(timestamp);
+
+    // Extraer los componentes
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+
+      // Crear el string con formato HH:mm:ss
+      const formattedTime = `${hours}:${minutes}:${seconds}`;
+
+      return formattedTime;
+    }
+    return '-'
+
+  }
+
+  openModalNotification(idModal: string){
+    // set the modal menu element
+    const $targetEl = document.getElementById(idModal);
+    const modal = new Modal($targetEl);
+
+
+
+    // show the modal
+    modal.show();
+  }
+
+  closeModalNotification(idModal: string){
+    // set the modal menu element
+    const $targetEl = document.getElementById(idModal);
+    const modal = new Modal($targetEl);
+
+    // show the modal
+    modal.hide();
   }
 }

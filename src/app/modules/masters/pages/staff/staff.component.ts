@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Drawer, Modal } from 'flowbite';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Drawer, Dropdown, Modal } from 'flowbite';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { ApiServiceService } from 'src/app/services/api-service/api-service.service';
 
 @Component({
@@ -33,32 +35,87 @@ export class StaffComponent implements OnInit{
 
   persona: any;
 
-  tiemposCaptura: number[] = [0,3,9,15,30]
+  tiemposCaptura: number[] = [0,3,9,15,30,60]
 
   checkPrincipal: boolean = false;
 
+  centros: any[] = [];
 
-  constructor(private http: HttpClient){
+  segmentos: any[] = [];
 
+  areas: any[] = [];
+
+  campanas: any[] = [];
+
+  centro: number = 0;
+  segmento: number = 0;
+  campana: number = 0;
+
+  searchForm: FormGroup;
+
+  constructor(private http: HttpClient, private fb: FormBuilder){
+    this.searchForm = this.fb.group({
+      search: [''],
+    });
   }
 
   async ngOnInit() {
     const persona = localStorage.getItem('persona');
     this.persona = JSON.parse(persona!);
+    this.listarAreas();
 
     this.nivel = this.persona.in_Nivel -1;
     this.area = this.persona.in_AreaId;
 
-    await this.listPersonas('http://18.189.173.243/api/personas?page=1');
+    await this.listPersonas('http://10.200.40.71:8000/api/personas?page=1');
 
+    this.inicializaDropdown();
+    this.listCentros();
+    this.listarSegmento();
+
+
+    this.searchForm.get('search')?.valueChanges
+      .pipe(
+        //debounceTime(300), // Retraso de 300ms
+        //distinctUntilChanged() // Ignora valores repetidos
+      )
+      .subscribe((value: string) => {
+        if (value.length > 3 || value.length == 0) {
+          this.listPersonas('http://10.200.40.71:8000/api/personas?page=1');
+        }
+      });
 
   }
 
-   listPersonas(url: string) {
+  listPersonas(url: string) {
 
     this.loading= true;
 
-    this.http.get(url+'&nivel='+this.nivel+'&area='+this.area).subscribe((response:any) => {
+    let newUrl: string = url+'&nivel='+this.nivel+'&area='+this.area;
+    console.log('este es mi centro', this.centro);
+    if (this.centro != 0) {
+      newUrl += '&centro='+this.centro;
+    }
+
+    if (this.segmento != 0) {
+      newUrl += '&segmento='+this.segmento;
+    }
+
+    if (this.centro != 0 && this.segmento != 0) {
+      this.listarCampanas();
+    }
+
+    if (this.campana != 0) {
+      newUrl += '&campana='+this.campana;
+    }
+
+    let texto = this.searchForm.get('search')?.value;
+    console.log('la busqued es: ', texto.toUpperCase());
+    if (texto != '') {
+      newUrl += '&search='+texto.toUpperCase();
+    }
+
+    this.http.get(newUrl).subscribe((response:any) => {
       this.personas = response.data.data;
 
       this.personas = this.personas.map(persona => ({
@@ -153,5 +210,63 @@ export class StaffComponent implements OnInit{
       this.checkPrincipal = false
   }
 
+  inicializaDropdown(){
+    // set the dropdown menu element
+    const $targetEl = document.getElementById('actionsDropdown');
+    // set the element that trigger the dropdown menu on click
+    const $triggerEl = document.getElementById('actionsDropdownButton');
 
+    // options with default values
+    const options:any = {
+      placement: 'bottom',
+      triggerType: 'click',
+      offsetSkidding: 0,
+      offsetDistance: 10,
+      delay: 300,
+      ignoreClickOutsideClass: false,
+      onHide: () => {
+          console.log('dropdown has been hidden');
+      },
+      onShow: () => {
+          console.log('dropdown has been shown');
+      },
+      onToggle: () => {
+          console.log('dropdown has been toggled');
+      },
+    };
+
+    // instance options object
+    const instanceOptions = {
+    id: 'dropdownMenu',
+    override: true
+    };
+
+    const dropdown = new Dropdown($targetEl, $triggerEl, options, instanceOptions);
+    //dropdown.show();
+  }
+
+  listCentros(){
+
+    const centros = localStorage.getItem('centros');
+    this.centros = JSON.parse(centros!);
+
+  }
+
+  listarSegmento(){
+    this.http.get('http://18.189.173.243/api/segmentos').subscribe((resp: any) => {
+      this.segmentos = resp.data;
+    });
+  }
+
+  listarAreas(){
+    this.http.get('http://10.200.40.71:8000/api/areas').subscribe((resp: any) => {
+      this.areas = resp.data;
+    });
+  }
+
+  listarCampanas(){
+    this.http.get('http://10.200.40.71:8000/api/campanas?in_CentroId='+this.centro+'&in_SegmentoId='+this.segmento).subscribe((resp: any) => {
+      this.campanas = resp.data;
+    });
+  }
 }

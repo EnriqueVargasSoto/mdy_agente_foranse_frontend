@@ -11,6 +11,7 @@ export interface Screen {
   created_at?:    Date;
   updated_at?:    Date;
   tracking?:      Tracking;
+  fecha_captura?: string;
 }
 
 export interface Tracking {
